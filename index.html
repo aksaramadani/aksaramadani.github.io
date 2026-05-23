@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aksa Ramadani — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0800; --bg2: #110e00; --bg3: #1a1500;
+    --amber: #f5a623; --orange: #e8621a; --gold: #ffd166; --brown: #8b5e1a;
+    --cream: #fdf0d5; --muted: #a08040;
+    --border: rgba(245,166,35,0.1); --border2: rgba(245,166,35,0.22);
+    --br: 14px; --br-sm: 8px;
+  }
+  html { scroll-behavior: smooth; }
+  body { 
+    font-family: 'Outfit', sans-serif; 
+    background-color: var(--bg);
+    background-image: 
+      radial-gradient(at 10% 20%, rgba(232, 50, 20, 0.15) 0px, transparent 50%),
+      radial-gradient(at 90% 10%, rgba(245, 166, 35, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 90%, rgba(255, 255, 255, 0.06) 0px, transparent 50%),
+      radial-gradient(at 20% 80%, rgba(200, 100, 0, 0.15) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--cream); 
+    min-height: 100vh; 
+    padding: 2rem 1rem 4rem; 
+  }
+  .wrap { max-width: 700px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    position: relative; border-radius: 20px; margin-bottom: 1.25rem; overflow: hidden;
+    border: 0.5px solid rgba(245,166,35,0.3);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('orange.jpg');
+    background-size: cover; background-position: center;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(5,3,0,0.84) 0%, rgba(10,6,0,0.72) 50%, rgba(15,8,0,0.8) 100%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; padding: 2.5rem 2rem 2rem; }
+
+  .hero-bar {
+    height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--orange), var(--amber), var(--gold), var(--amber), var(--orange));
+    margin-bottom: 1.8rem;
+    animation: pulse 3s ease-in-out infinite alternate;
+  }
+  @keyframes pulse { from { opacity: 0.8; } to { opacity: 1; filter: brightness(1.3); } }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 12vw, 84px);
+    font-weight: 900; font-style: italic; line-height: 0.95;
+    color: #fff; text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+    animation: fadeUp 0.6s ease both;
+    margin-bottom: 0.8rem;
+  }
+  .hero-name span {
+    background: linear-gradient(135deg, var(--orange), var(--gold), #ff5e00);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    filter: drop-shadow(0 2px 12px rgba(232,98,26,0.6));
+    display: inline-block;
+  }
+  .hero-role {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(253,240,213,0.7); margin: 0.6rem 0 1.1rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-desc {
+    font-size: 15px; font-weight: 300; color: rgba(253,240,213,0.88);
+    line-height: 1.8; max-width: 500px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1.3rem; animation: fadeUp 0.6s 0.3s ease both; }
+  .tag { font-size: 12px; font-weight: 400; padding: 4px 13px; border-radius: 20px; border: 0.5px solid; letter-spacing: 0.02em; backdrop-filter: blur(6px); }
+  .tag-amber  { background: rgba(245,166,35,0.15);  color: var(--gold);   border-color: rgba(245,166,35,0.45); }
+  .tag-orange { background: rgba(232,98,26,0.15);   color: #ffb085;       border-color: rgba(232,98,26,0.45); }
+  .tag-gold   { background: rgba(255,209,102,0.12); color: var(--gold);   border-color: rgba(255,209,102,0.4); }
+  .tag-brown  { background: rgba(0,0,0,0.3);        color: #e0b87a;       border-color: rgba(139,94,26,0.55); }
+
+  .links { display: flex; gap: 10px; margin-top: 1.5rem; animation: fadeUp 0.6s 0.4s ease both; }
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 500; padding: 8px 18px;
+    border-radius: var(--br-sm); border: 0.5px solid rgba(245,166,35,0.45);
+    color: #fff; text-decoration: none;
+    background: rgba(0,0,0,0.45); backdrop-filter: blur(6px);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .link-btn:hover { border-color: rgba(245,166,35,0.75); background: rgba(0,0,0,0.65); }
+  .link-btn i { font-size: 16px; color: var(--amber); }
+
+  /* FLOSSK */
+  .flossk-banner {
+    display: flex; align-items: center; gap: 14px; padding: 1rem 1.3rem;
+    border-radius: var(--br); background: rgba(139,94,26,0.1);
+    border: 0.5px solid rgba(139,94,26,0.3); margin-bottom: 1.25rem;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+  .flossk-dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--gold)); flex-shrink: 0; }
+  .flossk-text { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+  .flossk-text strong { color: #d4a060; font-weight: 500; }
+
+  /* SECTIONS */
+  .section { margin-bottom: 1.4rem; animation: fadeUp 0.6s 0.5s ease both; }
+  .sec-label {
+    font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; font-style: italic;
+    letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.85rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sec-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+  .card { 
+    background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--br); 
+    padding: 1.1rem 1.2rem; transition: all 0.3s ease; 
+    box-shadow: 0 0 8px rgba(245,166,35,0.05);
+  }
+  .card:hover { 
+    border-color: rgba(245,166,35,0.6); 
+    box-shadow: 0 0 15px rgba(245,166,35,0.25), inset 0 0 10px rgba(245,166,35,0.05);
+    transform: translateY(-2px);
+  }
+  .card-applying { 
+    background: var(--bg2); border: 1px solid rgba(232,98,26,0.4); border-radius: var(--br); 
+    padding: 1.1rem 1.2rem; transition: all 0.3s ease; 
+    box-shadow: 0 0 12px rgba(232,98,26,0.15);
+  }
+  .card-applying:hover { 
+    border-color: rgba(232,98,26,0.8); 
+    box-shadow: 0 0 20px rgba(232,98,26,0.35), inset 0 0 12px rgba(232,98,26,0.1);
+    transform: translateY(-2px);
+  }
+
+  .card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
+  .card-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ci-amber  { background: rgba(245,166,35,0.12); color: var(--amber); }
+  .ci-orange { background: rgba(232,98,26,0.12);  color: #f08050; }
+  .ci-gold   { background: rgba(255,209,102,0.1); color: var(--gold); }
+  .ci-brown  { background: rgba(139,94,26,0.18);  color: #d4a060; }
+
+  .card-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; font-style: italic; color: var(--cream); line-height: 1.2; }
+  .card-sub   { font-size: 12px; font-weight: 300; color: var(--muted); margin-top: 0.25rem; line-height: 1.6; }
+  .card-meta  { font-size: 11px; color: var(--muted); margin-top: 0.6rem; display: flex; align-items: center; gap: 4px; font-weight: 300; }
+  .card-meta i { font-size: 13px; }
+
+  .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 400; padding: 3px 10px; border-radius: 20px; margin-top: 0.6rem; letter-spacing: 0.02em; }
+  .badge-done     { background: rgba(245,166,35,0.08); color: var(--amber); border: 0.5px solid rgba(245,166,35,0.2); }
+  .badge-applying { background: rgba(232,98,26,0.1);   color: #f08050;      border: 0.5px solid rgba(232,98,26,0.3); }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; }
+  .skill-item {
+    background-color: var(--bg2);
+    background-image: 
+      linear-gradient(135deg, rgba(5,3,0,0.85) 0%, rgba(15,8,0,0.75) 100%),
+      url('orange.jpg');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    border: 0.5px solid var(--border); border-radius: var(--br-sm);
+    padding: 0.6rem 1rem; display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 400; color: var(--cream); transition: border-color 0.2s;
+  }
+  .skill-item:hover { border-color: var(--border2); }
+  .skill-item i { font-size: 15px; color: var(--amber); }
+
+  .about-box { 
+    background-color: var(--bg2);
+    background-image: 
+      linear-gradient(135deg, rgba(5,3,0,0.88) 0%, rgba(15,8,0,0.8) 100%),
+      url('orange.jpg');
+    background-size: cover; background-position: center;
+    border: 0.5px solid var(--border); border-radius: var(--br); padding: 1.3rem 1.5rem; 
+  }
+  .about-box p { font-size: 14px; font-weight: 300; color: #c8a87a; line-height: 1.8; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; margin-top: 1rem; }
+  .about-row { font-size: 13px; color: var(--muted); display: flex; gap: 8px; font-weight: 300; }
+  .about-row strong { color: var(--cream); font-weight: 500; min-width: 82px; flex-shrink: 0; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 480px) { .about-grid { grid-template-columns: 1fr; } .links { flex-wrap: wrap; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-bar"></div>
+      <div class="hero-name"> Aksa<br><span>Ramadani</span></div>
+      <div class="hero-role">Computer Science Student &nbsp;·&nbsp; Prizren, Kosovo</div>
+      <div class="hero-desc">First-year CS student passionate about building things, from hardware to games to the web. I thrive in collaborative, creative environments and love turning ideas into reality fast.</div>
+      <div class="tag-row">
+        <span class="tag tag-amber">Web Design</span>
+        <span class="tag tag-orange">Problem Solving</span>
+        <span class="tag tag-brown">Open Source</span>
+        <span class="tag tag-gold">Game Dev</span>
+        <span class="tag tag-amber">Arduino / Hardware</span>
+      </div>
+      <div class="links">
+        <a class="link-btn" href="https://github.com/aksaramadani" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+        <a class="link-btn" href="https://www.linkedin.com/in/aksa-ramadani-a332113bb" target="_blank"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flossk-banner">
+    <div class="flossk-dot"></div>
+    <div class="flossk-text"><strong>FLOSSK Member</strong> — Organisation for Free/Libre and Open Source Software in Kosovo. Committed to open tech and community-driven development.</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Hackathons</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon ci-amber"><i class="ti ti-robot"></i></div>
+          <div class="card-title">Build with AI - Google for Developers</div>
+        </div>
+        <div class="card-sub">Google Developer Group hackathon - My team and I built AI-powered solutions, collaborated under pressure, and placed in the Top 4 teams!</div>
+        <div class="card-meta"><i class="ti ti-map-pin"></i> Prishtina · 2026</div>
+        <div class="badge badge-done"><i class="ti ti-trophy"></i> Top 4 Team</div>
+      </div>
+      <div class="card-applying">
+        <div class="card-top">
+          <div class="card-icon ci-orange"><i class="ti ti-topology-star-3"></i></div>
+          <div class="card-title">JunctionX Tirana 2026</div>
+        </div>
+        <div class="card-sub">Regional hackathon connecting innovators across the Balkans. Excited to bring my skills and energy to this stage.</div>
+        <div class="card-meta"><i class="ti ti-map-pin"></i> Tirana · 2026</div>
+        <div class="badge badge-applying"><i class="ti ti-send"></i> Applying now</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Workshops & Events</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon ci-brown" style="margin-bottom:.6rem"><i class="ti ti-cpu"></i></div>
+        <div class="card-title">Arduino Workshop - Hackerspace Prishtina</div>
+        <div class="card-sub">Hands-on hardware programming — sensors, circuits, IoT and physical computing.</div>
+        <div class="card-meta"><i class="ti ti-calendar"></i> FLOSSK 2026</div>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-amber" style="margin-bottom:.6rem"><i class="ti ti-device-gamepad-2"></i></div>
+        <div class="card-title">Game Development Workshop</div>
+        <div class="card-sub">ITP workshop on game design and development — turning concepts into playable experiences in DigiCamp & Digital Skills Festival 2026.</div>
+        <div class="card-meta"><i class="ti ti-calendar"></i> 2026</div>
+      </div>
+      <div class="card">
+        <div class="card-icon ci-gold" style="margin-bottom:.6rem"><i class="ti ti-school"></i></div>
+        <div class="card-title">DigiCamp & Digital Skills Festival 2026 - Prizren</div>
+        <div class="card-sub">Digital skills camp — networking, learning, and connecting with the tech community in Prizren.</div>
+        <div class="card-meta"><i class="ti ti-map-pin"></i> Prizren · 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-item"><i class="ti ti-palette"></i> Design & Web Design</div>
+      <div class="skill-item"><i class="ti ti-bulb"></i> Creativity</div>
+      <div class="skill-item"><i class="ti ti-users"></i> Networking</div>
+      <div class="skill-item"><i class="ti ti-microphone"></i> Public Speaking</div>
+      <div class="skill-item"><i class="ti ti-puzzle"></i> Problem Solving</div>
+      <div class="skill-item"><i class="ti ti-language"></i> Languages</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">About</div>
+    <div class="about-box">
+      <p>I'm a curious, creative person who loves the intersection of technology and people. Whether it's a hardware prototype, a game, or a web interface. I care about making things that work and feel good to use.</p>
+      <div class="about-grid">
+        <div class="about-row"><strong>University</strong> Ukshin Hoti - Computer Science</div>
+        <div class="about-row"><strong>Year</strong> 1st (of 4)</div>
+        <div class="about-row"><strong>Graduating</strong> 2028</div>
+        <div class="about-row"><strong>Born</strong> Aug 8, 2006</div>
+        <div class="about-row"><strong>Community</strong> FLOSSK</div>
+        <div class="about-row"><strong>Based in</strong> Prizren, Kosovo</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
